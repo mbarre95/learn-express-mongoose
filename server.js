@@ -15,7 +15,6 @@ let Authors = require('./pages/authors');
 let BookDetails = require('./pages/book_details');
 let CreateBook = require('./pages/create_book');
 
-
 const mongoose = require('mongoose');
 const mongoDB = "mongodb://127.0.0.1:27017/my_library_db";
 // mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -36,6 +35,7 @@ app.get('/home', (_, res) => {
   Home.show_home(res);
 })
 
+// Retrieve available books
 app.get('/available', (_, res) => {
   BooksStatus.show_all_books_status(res);
 })
@@ -46,6 +46,7 @@ app.get('/books', (_, res) => {
     .catch((_) => res.send('No books found'));
 })
 
+// Retrieve authors with name and lifespan
 app.get('/authors', (_, res) => {
   Authors.show_all_authors(res);
 })
